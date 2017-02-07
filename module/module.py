@@ -80,6 +80,9 @@ class Graphite_broker(BaseModule):
         self.multival = re.compile(r'_(\d+)$')
         self.chunk_size = 200
         self.max_chunk_size = 100000
+        # Change the default behavior, to allow dots in metrics.
+        self.illegal_char=re.compile(r'[^-a-zA-Z0-9\.]')
+
 
         # optional "sub-folder" in graphite to hold the data of a specific host
         self.graphite_data_source = \
